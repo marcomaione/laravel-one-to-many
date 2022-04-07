@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -45,7 +46,24 @@ class PostController extends Controller
         );
 
         $data = $request->all();
-        
+
+        $slug = Str::slug($data['title']);
+
+        $counter = 1;
+
+        while(Post::where('slug', $slug)->first()) {
+
+            $slug = Str::slug($data['title']).'-'. $counter;
+            $counter++;
+
+        }
+
+        $data['slug'] = $slug;
+        $post = new Post();
+        $post->fill($data);
+        $post->save();
+        return redirect()->route('adminpost.index ');
+
 
     }
 
