@@ -24,7 +24,11 @@
                                 <td>{{$post->title}}</td>
                                 <td>{{$post->content}}</td>
                                 <td>{{$post->slug}}</td>
-                                <td><a href="{{route('admin.post.show', $post->id)}}" class="btn btn-primary">vedi</a></td>
+                                <td>
+                                    <a href="{{route('admin.post.show', $post->id)}}" class="btn btn-primary">vedi</a>
+                                    <a href="{{route('admin.post.show', $post->id)}}" class="btn btn-secondary">modifica</a>
+                                
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

@@ -84,9 +84,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        return view('admin.post.edit', compact('post'))
     }
 
     /**
@@ -96,9 +96,34 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        / $request->validate(
+            [
+                'title'=>'required|min:5',
+                'content'=> 'required|min:10'
+            ]
+        );
+
+        $data = $request->all();
+
+        $slug = Str::slug($data['title']);
+
+        $counter = 1;
+
+        while(Post::where('slug', $slug)->first()) {
+
+            $slug = Str::slug($data['title']).'-'. $counter;
+            $counter++;
+
+        }
+
+        $data['slug'] = $slug;
+        $post = new Post();
+        $post->fill($data);
+        $post->save();
+        return redirect()->route('admin.post.index');
+
     }
 
     /**
