@@ -1,4 +1,4 @@
-@extends('admin.layouts.base')
+ @extends('admin.layouts.base')
 
 @section('content')
     <div class="container">
@@ -17,7 +17,7 @@
                     </div>
                     <div class="form-group">
                         <label for="content">Contenuto</label>
-                        <textarea class="form-control" id="content" rows="10" name="content" ></textarea>
+                        <textarea class="form-control" id="content" rows="10" name="content">{{old('content')}}</textarea>
                        
                     </div>
                     
