@@ -86,7 +86,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.post.edit', compact('post'))
+        return view('admin.post.edit', compact('post'));
     }
 
     /**
@@ -98,7 +98,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        / $request->validate(
+        $request->validate(
             [
                 'title'=>'required|min:5',
                 'content'=> 'required|min:10'
@@ -108,20 +108,23 @@ class PostController extends Controller
         $data = $request->all();
 
         $slug = Str::slug($data['title']);
+        if ($post->slug != $slug) {
 
-        $counter = 1;
+            $counter = 1;
 
-        while(Post::where('slug', $slug)->first()) {
+            while(Post::where('slug', $slug)->first()) {
 
-            $slug = Str::slug($data['title']).'-'. $counter;
-            $counter++;
+                $slug = Str::slug($data['title']).'-'. $counter;
+                $counter++;
 
+            }
+            $data['slug'] = $slug;
         }
 
-        $data['slug'] = $slug;
-        $post = new Post();
-        $post->fill($data);
+        
+        $post->update($data);
         $post->save();
+
         return redirect()->route('admin.post.index');
 
     }
