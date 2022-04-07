@@ -42,15 +42,12 @@ class PostController extends Controller
                 'title'=>'required|min.5',
                 'content'=> 'required|min:10'
             ]
-            );
+        );
 
-            $data = $request->all();
+        $data = $request->all();
+        
 
-            $slug = Str::slug($data['title']);
-
-            while(Post::where('slug',$slug)->first()) {
-                
-            }
+    }
 
     /**
      * Display the specified resource.
