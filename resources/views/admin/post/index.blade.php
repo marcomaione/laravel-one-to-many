@@ -24,9 +24,17 @@
                                 <td>{{$post->title}}</td>
                                 <td>{{$post->content}}</td>
                                 <td>{{$post->slug}}</td>
-                                <td>
+                                <td class="d-flex">
                                     <a href="{{route('admin.post.show', $post->id)}}" class="btn btn-primary">vedi</a>
                                     <a href="{{route('admin.post.edit', $post->id)}}" class="btn btn-secondary">modifica</a>
+
+                                    <form method="POST" action="{{route('admin.post.destroy', $post->id)}}">
+
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button type="submit" class="btn btn-danger">Elimina</button>
+                                    </form>
                                 
                                 </td>
                             </tr>
