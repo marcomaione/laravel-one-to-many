@@ -40,7 +40,7 @@ class PostController extends Controller
     {
         $request->validate(
             [
-                'title'=>'required|min.5',
+                'title'=>'required|min:5',
                 'content'=> 'required|min:10'
             ]
         );
@@ -62,7 +62,7 @@ class PostController extends Controller
         $post = new Post();
         $post->fill($data);
         $post->save();
-        return redirect()->route('adminpost.index ');
+        return redirect()->route('admin.post.index');
 
 
     }
@@ -75,7 +75,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('admin.post.show', compact('post'));
     }
 
     /**

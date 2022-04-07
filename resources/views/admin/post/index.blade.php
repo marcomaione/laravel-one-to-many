@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
 
-                <a href="{{route('adminpost.create')}}" class="btn btn-primary">crea un post</a>
+                <a href="{{route('admin.post.create')}}" class="btn btn-primary">crea un post</a>
 
                 <table class="table">
                     <thead>
@@ -22,8 +22,9 @@
                             <tr>
                                 <td>{{$post->id}}</td>
                                 <td>{{$post->title}}</td>
-                                <td>{{subsring($post->content, 0, 30)}}</td>
+                                <td>{{$post->content}}</td>
                                 <td>{{$post->slug}}</td>
+                                <td><a href="{{route('admin.post.show', $post->id)}}" class="btn btn-primary">vedi</a></td>
                             </tr>
                         @endforeach
                     </tbody>

@@ -20,7 +20,7 @@ Auth::routes();
 
 route::middleware('auth')
     ->namespace('Admin')
-    ->name('admin')
+    ->name('admin.')
     ->prefix('admin')
     ->group(function() {
 

@@ -7,7 +7,7 @@
 
                 <h1>crea un nuovo post</h1>
 
-                <form method="POST" action="{{route('adminpost.store')}}">
+                <form method="POST" action="{{route('admin.post.store')}}">
 
                     @csrf
                     
