@@ -14,6 +14,7 @@
                         <th scope="col">Titolo</th>
                         <th scope="col">Contenuto</th>
                         <th scope="col">Slug</th>
+                        <th scope="col">Categoria</th>
                         <th scope="col">Azioni</th>
                       </tr>
                     </thead>
@@ -24,6 +25,7 @@
                                 <td>{{$post->title}}</td>
                                 <td>{{$post->content}}</td>
                                 <td>{{$post->slug}}</td>
+                                
                                 <td class="d-flex">
                                     <a href="{{route('admin.post.show', $post->id)}}" class="btn btn-primary">vedi</a>
                                     <a href="{{route('admin.post.edit', $post->id)}}" class="btn btn-secondary">modifica</a>
