@@ -25,6 +25,7 @@
                                 <td>{{$post->title}}</td>
                                 <td>{{$post->content}}</td>
                                 <td>{{$post->slug}}</td>
+                                <td>{{$post->category->name}}</td>
                                 
                                 <td class="d-flex">
                                     <a href="{{route('admin.post.show', $post->id)}}" class="btn btn-primary">vedi</a>
